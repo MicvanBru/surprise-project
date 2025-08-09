@@ -1,0 +1,552 @@
+.page-header-compact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.page-header-compact h1 {
+    font-size: 1.3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    line-height: 1;
+}
+
+.logout-btn-small {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 4px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.logout-btn-small:hover {
+    background: white;
+    color: var(--sims-blue);
+    transform: translateY(-1px);
+}
+
+.tier-selector {
+    display: flex;
+    gap: 6px;
+    background: white;
+    padding: 5px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.tier-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.tier-btn:hover {
+    background: var(--bg-light);
+    transform: translateY(-2px);
+}
+
+.tier-btn.active {
+    background: linear-gradient(135deg, var(--sims-blue), var(--sims-blue-dark));
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 178, 202, 0.3);
+}
+
+.tier-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tier-display {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 15px;
+    min-height: 0;
+    overflow: visible;
+}
+
+.tier-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: visible;
+}
+
+.tier-card.slide-out-left {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.tier-card.slide-out-right {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.tier-card.slide-in-left {
+    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tier-card.slide-in-right {
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.tier-image-container {
+    position: relative;
+    margin: 10px auto 20px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.tier-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background: transparent;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.tier-image.floating {
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.tier-image-shadow {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 25px 15px rgba(0, 0, 0, 0.35);
+    filter: blur(4px);
+    animation: shadowPulse 4s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(0.9);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(-50%) scaleX(1.1);
+        opacity: 0.3;
+    }
+}
+
+
+.specs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+@media (min-width: 900px) {
+    .specs-container {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .sims-performance-box {
+        flex: 1;
+        margin-bottom: 0;
+    }
+    
+    .tier-specs {
+        flex: 1;
+        margin-bottom: 0;
+    }
+}
+
+.tier-specs {
+    background: var(--bg-light);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 5px;
+}
+
+.spec-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.spec-row:last-child {
+    margin-bottom: 0;
+}
+
+.spec-icon {
+    font-size: 1.5rem;
+}
+
+.spec-details {
+    flex: 1;
+}
+
+.spec-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1px;
+}
+
+.spec-value {
+    display: block;
+    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.sims-performance-box {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(0, 178, 202, 0.1));
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 5px;
+}
+
+.sims-performance-box h3 {
+    color: var(--sims-purple);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.sims-performance-box p {
+    color: var(--text-primary);
+    line-height: 1.5;
+    font-size: 0.9rem;
+    white-space: pre-line;
+    margin: 0;
+}
+
+.power-upgrade {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(241, 196, 15, 0.05));
+    border: 2px solid var(--sims-yellow);
+    border-radius: 10px;
+    padding: 10px 12px;
+    transition: var(--transition);
+}
+
+.power-upgrade.active {
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.3), rgba(241, 196, 15, 0.15));
+    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.2);
+}
+
+.power-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.power-benefits {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    flex: 1;
+    gap: 2px;
+    padding-left: 8px;
+}
+
+.power-icon {
+    font-size: 1.6rem;
+}
+
+.power-label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 1px;
+}
+
+.power-price {
+    display: block;
+    color: var(--sims-yellow);
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background: linear-gradient(135deg, var(--sims-yellow), #F39C12);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(30px);
+}
+
+.summary-bar {
+    background: white;
+    border-radius: 16px;
+    padding: 12px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.summary-left {
+    display: flex;
+    gap: 30px;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.summary-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.summary-item.highlight .summary-value {
+    color: var(--sims-green);
+}
+
+.btn-create {
+    background: linear-gradient(135deg, var(--sims-blue), var(--sims-blue-dark));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 178, 202, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-create:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 178, 202, 0.4);
+}
+
+.btn-create:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-create:hover:not(:disabled) .btn-arrow {
+    transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+    .page-header-compact {
+        padding: 8px 0;
+    }
+    
+    .page-header-compact h1 {
+        font-size: 1.3rem;
+    }
+    
+    .tier-selector {
+        padding: 5px;
+        gap: 5px;
+    }
+    
+    .tier-btn {
+        padding: 8px 10px;
+    }
+    
+    .tier-name {
+        font-size: 0.85rem;
+    }
+    
+    .tier-card {
+        padding: 15px;
+    }
+    
+    .tier-image-container {
+        max-width: 200px;
+        margin: 5px auto 15px;
+    }
+    
+    .specs-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .sims-performance-box h3 {
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+    }
+    
+    .sims-performance-box p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .tier-specs {
+        padding: 10px;
+    }
+    
+    .spec-row {
+        margin-bottom: 6px;
+    }
+    
+    .spec-label {
+        font-size: 0.75rem;
+    }
+    
+    .spec-value {
+        font-size: 0.95rem;
+    }
+    
+    .power-upgrade {
+        padding: 8px 10px;
+    }
+    
+    .power-label {
+        font-size: 0.9rem;
+    }
+    
+    .power-benefits {
+        font-size: 0.8rem;
+    }
+    
+    .summary-bar {
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .summary-left {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .btn-create {
+        width: 100%;
+        justify-content: center;
+    }
+}

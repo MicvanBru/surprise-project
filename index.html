@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Gift - Enter Code</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="plumbob">♦</div>
+            <h1>Sul Sul! 👋</h1>
+            <p class="subtitle">Enter your special code to unlock your surprise</p>
+            
+            <div class="pin-container">
+                <input type="text" maxlength="1" class="pin-input" id="pin1" autocomplete="off">
+                <input type="text" maxlength="1" class="pin-input" id="pin2" autocomplete="off">
+                <input type="text" maxlength="1" class="pin-input" id="pin3" autocomplete="off">
+                <input type="text" maxlength="1" class="pin-input" id="pin4" autocomplete="off">
+                <input type="text" maxlength="1" class="pin-input" id="pin5" autocomplete="off">
+                <input type="text" maxlength="1" class="pin-input" id="pin6" autocomplete="off">
+            </div>
+            
+            <div id="error-message" class="error-message"></div>
+            <div id="hint-message" class="hint-message"></div>
+            
+            <button id="submit-btn" class="btn-primary">
+                <span class="btn-text">Unlock Surprise</span>
+                <span class="btn-icon">🎁</span>
+            </button>
+            
+            <div class="decorative-text">
+                <span class="plumbob-small">♦</span>
+                A special gift awaits
+                <span class="plumbob-small">♦</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/login.js"></script>
+</body>
+</html>

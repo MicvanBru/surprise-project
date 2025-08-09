@@ -1,0 +1,265 @@
+.page-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.page-header h1 {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+.summary-container {
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.build-image {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    flex-shrink: 0;
+    object-fit: contain;
+    align-self: center;
+}
+
+.build-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.build-badge.budget { color: var(--sims-green); }
+.build-badge.medium { color: var(--sims-blue); }
+.build-badge.premium { color: var(--sims-purple); }
+
+.build-details {
+    flex: 1;
+}
+
+.specs-container {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.specs-container h3 {
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    padding: 8px;
+    background: white;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.spec-item:last-child {
+    margin-bottom: 0;
+}
+
+.spec-icon {
+    font-size: 1.5rem;
+}
+
+.spec-info {
+    flex: 1;
+}
+
+.spec-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+}
+
+.spec-value {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.price-breakdown {
+    background: linear-gradient(135deg, rgba(0, 178, 202, 0.05), rgba(0, 178, 202, 0.1));
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(0, 178, 202, 0.2);
+}
+
+.price-row:last-child {
+    border-bottom: none;
+}
+
+.price-row.total {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 2px solid var(--sims-blue);
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: var(--sims-blue);
+}
+
+.remaining-budget-highlight {
+    background: linear-gradient(135deg, var(--sims-green), var(--sims-green-dark));
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4);
+}
+
+.remaining-content h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.remaining-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.expansion-suggestion {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    line-height: 1.3;
+}
+
+.sims-performance {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(0, 178, 202, 0.1));
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.sims-performance h3 {
+    color: var(--sims-purple);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.sims-performance p {
+    color: var(--text-primary);
+    line-height: 1.5;
+    font-size: 0.95rem;
+    white-space: pre-line;
+}
+
+.message-card {
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(241, 196, 15, 0.05));
+    border: 2px solid var(--sims-yellow);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.message-card h2 {
+    color: var(--sims-purple);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.message-card p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.message-card .emphasis {
+    font-weight: bold;
+    color: var(--sims-green);
+    font-size: 1.2rem;
+}
+
+.container.summary-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.action-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .summary-container {
+        flex-direction: column-reverse;
+    }
+    
+    .build-image {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        order: 1;
+    }
+    
+    .build-details {
+        order: 2;
+    }
+    
+    .remaining-budget-highlight {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .remaining-amount {
+        font-size: 1.8rem;
+    }
+    
+    .action-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px 0;
+    }
+    
+    .action-container button {
+        width: 100%;
+    }
+}

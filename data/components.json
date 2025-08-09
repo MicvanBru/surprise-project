@@ -1,0 +1,57 @@
+{
+  "budget": 800,
+  "currency": {
+    "symbol": "§",
+    "name": "Simoleon"
+  },
+  "builds": {
+    "budget": {
+      "name": "Newbie Simmer",
+      "basePrice": 300,
+      "powerUpPrice": 50,
+      "description": "Perfect for cozy gameplay with smooth performance",
+      "simsDescription": "• Run Sims 4 on medium settings\n• Perfect for building homes and creating Sims\n• Smooth gameplay with base game\n• Handles 3-4 expansion packs well",
+      "components": {
+        "gpu": "Entry Gaming GPU",
+        "storage": "500GB SSD"
+      },
+      "poweredComponents": {
+        "gpu": "Enhanced Gaming GPU",
+        "storage": "1TB SSD"
+      },
+      "image": "images/tier_1_desktop.png"
+    },
+    "medium": {
+      "name": "Seasoned Player",
+      "basePrice": 500,
+      "powerUpPrice": 75,
+      "description": "Great balance of performance and features",
+      "simsDescription": "• Run Sims 4 on high settings\n• Handle large households smoothly\n• Create complex builds without lag\n• Play with 8+ expansion packs",
+      "components": {
+        "gpu": "Mid-Range Gaming GPU",
+        "storage": "1TB SSD"
+      },
+      "poweredComponents": {
+        "gpu": "High-Performance GPU",
+        "storage": "2TB SSD"
+      },
+      "image": "images/tier_2_desktop.png"
+    },
+    "premium": {
+      "name": "Master Builder",
+      "basePrice": 650,
+      "powerUpPrice": 100,
+      "description": "Top-tier performance for the ultimate experience",
+      "simsDescription": "• Run Sims 4 on ultra settings\n• All expansion packs at max performance\n• Stream and record gameplay\n• Heavy mod support\n• Zero lag with massive builds",
+      "components": {
+        "gpu": "High-End Gaming GPU",
+        "storage": "2TB SSD"
+      },
+      "poweredComponents": {
+        "gpu": "Flagship Gaming GPU",
+        "storage": "4TB SSD"
+      },
+      "image": "images/tier_3_desktop.png"
+    }
+  }
+}

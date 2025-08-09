@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Gaming Build Summary</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/summary.css">
+</head>
+<body>
+    <div class="container summary-page">
+        <header class="page-header">
+            <h1>Your Gaming Build</h1>
+        </header>
+        
+        <div class="summary-container">
+            <div class="build-details">
+                
+                <div class="specs-container">
+                    <h3>Your Components:</h3>
+                    <div class="spec-item">
+                        <span class="spec-icon">🎮</span>
+                        <div class="spec-info">
+                            <span class="spec-label">Graphics Card</span>
+                            <span class="spec-value" id="gpu-spec"></span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">💾</span>
+                        <div class="spec-info">
+                            <span class="spec-label">Storage</span>
+                            <span class="spec-value" id="storage-spec"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sims-performance">
+                    <h3>Sims 4 Performance</h3>
+                    <p id="sims-description"></p>
+                </div>
+                
+                <div class="price-breakdown">
+                    <div class="price-row">
+                        <span>Base Build Cost:</span>
+                        <span id="base-cost"></span>
+                    </div>
+                    <div class="price-row" id="powerup-row" style="display: none;">
+                        <span>Power Upgrade:</span>
+                        <span id="powerup-cost"></span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total Build Cost:</span>
+                        <span id="total-cost"></span>
+                    </div>
+                </div>
+                
+                <div class="remaining-budget-highlight">
+                    <div class="plumbob">♦</div>
+                    <div class="remaining-content">
+                        <h3>Remaining for Expansion Packs</h3>
+                        <div class="remaining-amount" id="remaining-amount"></div>
+                        <p class="expansion-suggestion" id="expansion-suggestion"></p>
+                    </div>
+                    <div class="plumbob">♦</div>
+                </div>
+            </div>
+            
+            <img id="build-image" src="" alt="Your Gaming Build" class="build-image">
+        </div>
+        
+        <div class="action-container">
+            <button id="back-btn" class="btn-secondary">
+                <span class="btn-icon">←</span>
+                <span class="btn-text">Modify Build</span>
+            </button>
+            <button id="restart-btn" class="btn-primary">
+                <span class="btn-text">Start Over</span>
+                <span class="btn-icon">🔄</span>
+            </button>
+        </div>
+    </div>
+    
+    <script src="js/common.js"></script>
+    <script src="js/summary.js"></script>
+</body>
+</html>

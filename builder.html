@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Gaming Desktop</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/builder.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header-compact">
+            <h1>Choose Your Gaming Build</h1>
+            <button id="logout-btn" class="logout-btn-small">Logout</button>
+        </header>
+        
+        <div class="tier-selector">
+            <button class="tier-btn" data-tier="budget">
+                <span class="tier-name">Newbie</span>
+            </button>
+            <button class="tier-btn" data-tier="medium">
+                <span class="tier-name">Seasoned</span>
+            </button>
+            <button class="tier-btn" data-tier="premium">
+                <span class="tier-name">Master</span>
+            </button>
+        </div>
+        
+        <div class="tier-display">
+            <div class="tier-card" id="tier-card">
+                <div class="specs-container">
+                    <div class="sims-performance-box" id="sims-performance" style="display: none;">
+                        <h3>Sims 4 Performance</h3>
+                        <p id="sims-description">-</p>
+                    </div>
+                    
+                    <div class="tier-specs" id="tier-specs" style="display: none;">
+                        <div class="spec-row">
+                            <span class="spec-icon">🎮</span>
+                            <div class="spec-details">
+                                <span class="spec-label">Graphics</span>
+                                <span class="spec-value" id="gpu-spec">-</span>
+                            </div>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-icon">💾</span>
+                            <div class="spec-details">
+                                <span class="spec-label">Storage</span>
+                                <span class="spec-value" id="storage-spec">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tier-image-container">
+                    <img id="tier-image" src="" alt="Desktop Build" class="tier-image floating">
+                    <div class="tier-image-shadow"></div>
+                </div>
+                
+                <div class="power-upgrade" id="power-upgrade" style="display: none;">
+                    <div class="power-left">
+                        <span class="power-icon">⚡</span>
+                        <div>
+                            <span class="power-label">Power Up</span>
+                            <span class="power-price" id="power-price">+§0</span>
+                        </div>
+                    </div>
+                    <div class="power-benefits">
+                        <span>• More powerful graphics</span>
+                        <span>• Double the storage</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="power-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="summary-bar">
+            <div class="summary-left">
+                <div class="summary-item">
+                    <span class="summary-label">Build Cost</span>
+                    <span class="summary-value" id="build-cost">§0</span>
+                </div>
+                <div class="summary-item highlight">
+                    <span class="summary-label">Remaining</span>
+                    <span class="summary-value" id="remaining-budget">§800</span>
+                </div>
+            </div>
+            <button id="create-btn" class="btn-create" disabled>
+                <span>Create Build</span>
+                <span class="btn-arrow">→</span>
+            </button>
+        </div>
+    </div>
+    
+    <script src="js/common.js"></script>
+    <script src="js/builder.js"></script>
+</body>
+</html>
