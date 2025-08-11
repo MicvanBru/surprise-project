@@ -17,17 +17,17 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px;
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    align-items: stretch;
 }
 
 .build-image {
-    width: 50%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 300px;
     height: auto;
-    flex-shrink: 0;
     object-fit: contain;
     align-self: center;
+    margin: 0 auto;
 }
 
 .build-badge {
@@ -47,7 +47,31 @@
 .build-badge.premium { color: var(--sims-purple); }
 
 .build-details {
-    flex: 1;
+    width: 100%;
+}
+
+.build-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 0;
+}
+
+.build-name-container h2 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.power-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
 }
 
 .specs-container {
@@ -131,38 +155,35 @@
     color: var(--sims-blue);
 }
 
-.remaining-budget-highlight {
-    background: linear-gradient(135deg, var(--sims-green), var(--sims-green-dark));
+.remaining-budget-section {
+    border: 2px solid var(--sims-green);
     border-radius: 12px;
     padding: 12px;
     margin-bottom: 10px;
-    color: white;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4);
+    background: rgba(144, 238, 144, 0.05);
 }
 
-.remaining-content h3 {
-    font-size: 1rem;
-    margin-bottom: 6px;
+.remaining-content h4 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .remaining-amount {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 6px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 8px;
+    color: var(--sims-green);
 }
 
 .expansion-suggestion {
-    font-size: 0.9rem;
-    opacity: 0.95;
-    line-height: 1.3;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
 }
 
 .sims-performance {
@@ -228,20 +249,60 @@
     padding: 20px 0;
 }
 
+.action-container button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.action-container .btn-secondary {
+    background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+    color: var(--text-primary);
+    border: 2px solid #ddd;
+}
+
+.action-container .btn-secondary:hover {
+    background: linear-gradient(145deg, #e0e0e0, #d0d0d0);
+    transform: translateY(-2px);
+}
+
+.action-container .btn-primary {
+    background: linear-gradient(145deg, var(--sims-blue), var(--sims-blue-dark));
+    color: white;
+    border: none;
+}
+
+.action-container .btn-primary:hover {
+    background: linear-gradient(145deg, var(--sims-blue-dark), var(--sims-blue));
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    font-size: 1.1rem;
+}
+
+.btn-text {
+    font-size: 1rem;
+}
+
 @media (max-width: 768px) {
     .summary-container {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
     
     .build-image {
         width: 100%;
         max-width: 200px;
-        margin: 0 auto;
-        order: 1;
+        margin: 0 auto 20px;
     }
     
     .build-details {
-        order: 2;
+        width: 100%;
     }
     
     .remaining-budget-highlight {

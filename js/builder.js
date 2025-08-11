@@ -6,12 +6,20 @@ let previousTier = null;
 document.addEventListener('DOMContentLoaded', async () => {
     if (!checkAuthentication()) return;
     
+    // Add page-load class for initial animations
+    document.body.classList.add('page-load');
+    
     config = await loadConfiguration();
     initializeBuilder();
     setupEventListeners();
     
-    // Select budget tier by default
-    selectTier('budget');
+    // Select budget tier by default (with initial load flag)
+    selectTier('budget', true);
+    
+    // Remove page-load class after animations complete (0.6s + 0.6s delay = 1.2s)
+    setTimeout(() => {
+        document.body.classList.remove('page-load');
+    }, 1300);
 });
 
 function initializeBuilder() {
@@ -34,7 +42,7 @@ function setupEventListeners() {
     });
 }
 
-function selectTier(tier) {
+function selectTier(tier, isInitialLoad = false) {
     if (selectedTier === tier) return;
     
     previousTier = selectedTier;
@@ -46,7 +54,13 @@ function selectTier(tier) {
     });
     document.querySelector(`[data-tier="${tier}"]`).classList.add('active');
     
-    animateCardTransition(tier);
+    if (!isInitialLoad) {
+        animateCardTransition(tier);
+    } else {
+        // On initial load, just update content without animation
+        const build = config.builds[tier];
+        updateCardContent(tier, build);
+    }
     updateBudgetDisplay();
     document.getElementById('create-btn').disabled = false;
 }
@@ -94,7 +108,7 @@ function updateCardContent(tier, build) {
     
     document.getElementById('sims-description').textContent = build.simsDescription;
     
-    document.getElementById('power-price').textContent = `+${formatCurrency(build.powerUpPrice)}`;
+    document.getElementById('power-price').innerHTML = `+${formatCurrency(build.powerUpPrice)}`;
     document.getElementById('power-toggle').checked = false;
     document.getElementById('power-upgrade').classList.remove('active');
     
@@ -132,8 +146,8 @@ function updateBudgetDisplay() {
     
     const remaining = totalBudget - buildCost;
     
-    document.getElementById('build-cost').textContent = formatCurrency(buildCost);
-    document.getElementById('remaining-budget').textContent = formatCurrency(remaining);
+    document.getElementById('build-cost').innerHTML = formatCurrency(buildCost);
+    document.getElementById('remaining-budget').innerHTML = formatCurrency(remaining);
     
     const remainingElement = document.querySelector('.summary-item.highlight .summary-value');
     if (remaining < 0) {

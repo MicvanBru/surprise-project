@@ -4,7 +4,12 @@ let attempts = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('authenticated') === 'true') {
-        window.location.href = 'builder.html';
+        // Check if intro has been completed
+        if (localStorage.getItem('intro_completed') === 'true') {
+            window.location.href = 'builder.html';
+        } else {
+            window.location.href = 'intro.html';
+        }
         return;
     }
     
@@ -15,10 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     inputs.forEach((input, index) => {
         input.addEventListener('input', (e) => {
-            const value = e.target.value;
+            let value = e.target.value;
             
-            if (value.length === 1) {
-                input.classList.add('filled');
+            // Only allow single digit numbers
+            if (!/^[0-9]?$/.test(value)) {
+                e.target.value = value.slice(0, 1).replace(/[^0-9]/g, '');
+                return;
+            }
+            
+            if (value.length === 1 && /^[0-9]$/.test(value)) {
+                // Check if this digit is correct
+                const correctDigit = CORRECT_PIN[index];
+                if (value === correctDigit) {
+                    input.classList.add('filled');
+                    input.classList.remove('incorrect');
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('filled');
+                }
                 
                 if (index < inputs.length - 1) {
                     inputs[index + 1].focus();
@@ -27,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 checkAllFilled();
             } else {
                 input.classList.remove('filled');
+                input.classList.remove('incorrect');
             }
         });
         
@@ -36,17 +56,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     inputs[index - 1].focus();
                     inputs[index - 1].value = '';
                     inputs[index - 1].classList.remove('filled');
+                    inputs[index - 1].classList.remove('incorrect');
                 }
             }
         });
         
         input.addEventListener('paste', (e) => {
             e.preventDefault();
-            const pasteData = e.clipboardData.getData('text').slice(0, 6);
+            const pasteData = e.clipboardData.getData('text').slice(0, 6).replace(/[^0-9]/g, '');
             
             for (let i = 0; i < pasteData.length && i < inputs.length; i++) {
-                inputs[i].value = pasteData[i];
-                inputs[i].classList.add('filled');
+                if (/^[0-9]$/.test(pasteData[i])) {
+                    inputs[i].value = pasteData[i];
+                    const correctDigit = CORRECT_PIN[i];
+                    if (pasteData[i] === correctDigit) {
+                        inputs[i].classList.add('filled');
+                        inputs[i].classList.remove('incorrect');
+                    } else {
+                        inputs[i].classList.add('incorrect');
+                        inputs[i].classList.remove('filled');
+                    }
+                }
             }
             
             checkAllFilled();
@@ -86,11 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.classList.remove('show');
         hintMessage.classList.remove('show');
         
-        const celebration = document.createElement('div');
-        celebration.className = 'celebration';
-        celebration.innerHTML = '🎉';
-        document.body.appendChild(celebration);
-        celebration.classList.add('show');
+        // Change button to success state
+        submitBtn.style.background = 'linear-gradient(145deg, #90EE90, #7FDD7F)';
+        submitBtn.style.borderColor = '#90EE90';
+        submitBtn.querySelector('.btn-text').textContent = 'Success!';
+        submitBtn.querySelector('.btn-icon').style.display = 'none';
+        submitBtn.disabled = true;
         
         inputs.forEach(input => {
             input.style.background = 'linear-gradient(145deg, #90EE90, #7FDD7F)';
@@ -100,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('authenticated', 'true');
         
         setTimeout(() => {
-            window.location.href = 'builder.html';
+            window.location.href = 'intro.html';
         }, 1500);
     }
     
@@ -110,12 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
         inputs.forEach(input => {
             input.value = '';
             input.classList.remove('filled');
+            input.classList.remove('incorrect');
             input.style.borderColor = '#E74C3C';
         });
         
         inputs[0].focus();
         
-        errorMessage.textContent = `Incorrect PIN. ${MAX_ATTEMPTS - attempts} attempts remaining.`;
+        errorMessage.textContent = 'Incorrect PIN. Please try again.';
         errorMessage.classList.add('show');
         
         if (attempts >= 2) {

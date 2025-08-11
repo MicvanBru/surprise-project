@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise Gift - Enter Code</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css?v=1.0">
+    <link rel="stylesheet" href="css/login.css?v=1.0">
 </head>
 <body>
     <div class="container">
@@ -15,12 +15,12 @@
             <p class="subtitle">Enter your special code to unlock your surprise</p>
             
             <div class="pin-container">
-                <input type="text" maxlength="1" class="pin-input" id="pin1" autocomplete="off">
-                <input type="text" maxlength="1" class="pin-input" id="pin2" autocomplete="off">
-                <input type="text" maxlength="1" class="pin-input" id="pin3" autocomplete="off">
-                <input type="text" maxlength="1" class="pin-input" id="pin4" autocomplete="off">
-                <input type="text" maxlength="1" class="pin-input" id="pin5" autocomplete="off">
-                <input type="text" maxlength="1" class="pin-input" id="pin6" autocomplete="off">
+                <input type="number" maxlength="1" class="pin-input" id="pin1" autocomplete="off" pattern="[0-9]" inputmode="numeric">
+                <input type="number" maxlength="1" class="pin-input" id="pin2" autocomplete="off" pattern="[0-9]" inputmode="numeric">
+                <input type="number" maxlength="1" class="pin-input" id="pin3" autocomplete="off" pattern="[0-9]" inputmode="numeric">
+                <input type="number" maxlength="1" class="pin-input" id="pin4" autocomplete="off" pattern="[0-9]" inputmode="numeric">
+                <input type="number" maxlength="1" class="pin-input" id="pin5" autocomplete="off" pattern="[0-9]" inputmode="numeric">
+                <input type="number" maxlength="1" class="pin-input" id="pin6" autocomplete="off" pattern="[0-9]" inputmode="numeric">
             </div>
             
             <div id="error-message" class="error-message"></div>
@@ -31,14 +31,9 @@
                 <span class="btn-icon">🎁</span>
             </button>
             
-            <div class="decorative-text">
-                <span class="plumbob-small">♦</span>
-                A special gift awaits
-                <span class="plumbob-small">♦</span>
-            </div>
         </div>
     </div>
     
-    <script src="js/login.js"></script>
+    <script src="js/login.js?v=1.0"></script>
 </body>
 </html>

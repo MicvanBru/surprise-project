@@ -7,7 +7,7 @@ function checkAuthentication() {
 }
 
 function formatCurrency(amount) {
-    return `§${amount}`;
+    return `<span class="plumbob-currency">♦</span>${amount}`;
 }
 
 function saveSelection(buildData) {

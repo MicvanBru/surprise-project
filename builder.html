@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Your Gaming Desktop</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/builder.css">
+    <link rel="stylesheet" href="css/main.css?v=1.0">
+    <link rel="stylesheet" href="css/builder.css?v=1.0">
 </head>
 <body>
     <div class="container">
@@ -62,12 +62,11 @@
                         <span class="power-icon">⚡</span>
                         <div>
                             <span class="power-label">Power Up</span>
-                            <span class="power-price" id="power-price">+§0</span>
+                            <span class="power-price" id="power-price">+<span class="plumbob-currency">♦</span>0</span>
                         </div>
                     </div>
                     <div class="power-benefits">
-                        <span>• More powerful graphics</span>
-                        <span>• Double the storage</span>
+                        <span>• More powerful graphics card</span>
                     </div>
                     <label class="toggle-switch">
                         <input type="checkbox" id="power-toggle">
@@ -81,21 +80,21 @@
             <div class="summary-left">
                 <div class="summary-item">
                     <span class="summary-label">Build Cost</span>
-                    <span class="summary-value" id="build-cost">§0</span>
+                    <span class="summary-value" id="build-cost"><span class="plumbob-currency">♦</span>0</span>
                 </div>
                 <div class="summary-item highlight">
                     <span class="summary-label">Remaining</span>
-                    <span class="summary-value" id="remaining-budget">§800</span>
+                    <span class="summary-value" id="remaining-budget"><span class="plumbob-currency">♦</span>800</span>
                 </div>
             </div>
             <button id="create-btn" class="btn-create" disabled>
-                <span>Create Build</span>
+                <span>All set!</span>
                 <span class="btn-arrow">→</span>
             </button>
         </div>
     </div>
     
-    <script src="js/common.js"></script>
-    <script src="js/builder.js"></script>
+    <script src="js/common.js?v=1.0"></script>
+    <script src="js/builder.js?v=1.0"></script>
 </body>
 </html>

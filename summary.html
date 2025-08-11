@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Gaming Build Summary</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/summary.css">
+    <link rel="stylesheet" href="css/main.css?v=1.0">
+    <link rel="stylesheet" href="css/summary.css?v=1.0">
 </head>
 <body>
     <div class="container summary-page">
@@ -14,8 +14,14 @@
         </header>
         
         <div class="summary-container">
+            <div class="build-name-container">
+                <h2 id="build-name"></h2>
+                <span id="power-badge" class="power-badge" style="display: none;">⚡ Powered Up</span>
+            </div>
+            
+            <img id="build-image" src="" alt="Your Gaming Build" class="build-image">
+            
             <div class="build-details">
-                
                 <div class="specs-container">
                     <h3>Your Components:</h3>
                     <div class="spec-item">
@@ -54,18 +60,14 @@
                     </div>
                 </div>
                 
-                <div class="remaining-budget-highlight">
-                    <div class="plumbob">♦</div>
+                <div class="remaining-budget-section">
                     <div class="remaining-content">
-                        <h3>Remaining for Expansion Packs</h3>
+                        <h4>Remaining for Expansion Packs</h4>
                         <div class="remaining-amount" id="remaining-amount"></div>
                         <p class="expansion-suggestion" id="expansion-suggestion"></p>
                     </div>
-                    <div class="plumbob">♦</div>
                 </div>
             </div>
-            
-            <img id="build-image" src="" alt="Your Gaming Build" class="build-image">
         </div>
         
         <div class="action-container">
@@ -80,7 +82,7 @@
         </div>
     </div>
     
-    <script src="js/common.js"></script>
-    <script src="js/summary.js"></script>
+    <script src="js/common.js?v=1.0"></script>
+    <script src="js/summary.js?v=1.0"></script>
 </body>
 </html>
