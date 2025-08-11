@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Your Gaming Desktop</title>
-    <link rel="stylesheet" href="css/main.css?v=1.0">
-    <link rel="stylesheet" href="css/builder.css?v=1.0">
+    <link rel="stylesheet" href="css/main.css?v=1.1">
+    <link rel="stylesheet" href="css/builder.css?v=1.1">
 </head>
 <body>
     <div class="container">
@@ -16,13 +16,13 @@
         
         <div class="tier-selector">
             <button class="tier-btn" data-tier="budget">
-                <span class="tier-name">Newbie</span>
+                <span class="tier-name">Cheerful</span>
             </button>
             <button class="tier-btn" data-tier="medium">
-                <span class="tier-name">Seasoned</span>
+                <span class="tier-name">Ambitious</span>
             </button>
             <button class="tier-btn" data-tier="premium">
-                <span class="tier-name">Master</span>
+                <span class="tier-name">Perfectionist</span>
             </button>
         </div>
         
@@ -36,10 +36,24 @@
                     
                     <div class="tier-specs" id="tier-specs" style="display: none;">
                         <div class="spec-row">
+                            <span class="spec-icon">🧠</span>
+                            <div class="spec-details">
+                                <span class="spec-label">Processor</span>
+                                <span class="spec-value" id="cpu-spec">-</span>
+                            </div>
+                        </div>
+                        <div class="spec-row">
                             <span class="spec-icon">🎮</span>
                             <div class="spec-details">
                                 <span class="spec-label">Graphics</span>
                                 <span class="spec-value" id="gpu-spec">-</span>
+                            </div>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-icon">💿</span>
+                            <div class="spec-details">
+                                <span class="spec-label">RAM</span>
+                                <span class="spec-value" id="ram-spec">-</span>
                             </div>
                         </div>
                         <div class="spec-row">
@@ -61,12 +75,9 @@
                     <div class="power-left">
                         <span class="power-icon">⚡</span>
                         <div>
-                            <span class="power-label">Power Up</span>
+                            <span class="power-label" id="power-label">Power Up</span>
                             <span class="power-price" id="power-price">+<span class="plumbob-currency">♦</span>0</span>
                         </div>
-                    </div>
-                    <div class="power-benefits">
-                        <span>• More powerful graphics card</span>
                     </div>
                     <label class="toggle-switch">
                         <input type="checkbox" id="power-toggle">
@@ -94,7 +105,7 @@
         </div>
     </div>
     
-    <script src="js/common.js?v=1.0"></script>
-    <script src="js/builder.js?v=1.0"></script>
+    <script src="js/common.js?v=1.1"></script>
+    <script src="js/builder.js?v=1.1"></script>
 </body>
 </html>

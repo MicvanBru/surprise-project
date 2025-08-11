@@ -22,15 +22,15 @@
 
 .wordle-header h1 {
     color: var(--sims-blue);
-    font-size: min(1.8rem, 4vh);
-    margin: 5px 0;
+    font-size: min(2.8rem, 6vh);
+    margin: 10px 0 8px 0;
     animation: pulse 2s ease-in-out infinite;
 }
 
 .wordle-header .subtitle {
     color: var(--text-secondary);
-    font-size: min(0.9rem, 2vh);
-    margin-bottom: 5px;
+    font-size: min(1.4rem, 3vh);
+    margin-bottom: 15px;
 }
 
 .help-button {
@@ -454,13 +454,13 @@
     }
     
     .wordle-header h1 {
-        font-size: min(1.5rem, 4vh);
-        margin: 2px 0;
+        font-size: min(2.5rem, 5.5vh);
+        margin: 8px 0 5px 0;
     }
     
     .wordle-header .subtitle {
-        font-size: min(0.85rem, 2vh);
-        margin-bottom: 2px;
+        font-size: min(1.3rem, 2.8vh);
+        margin-bottom: 10px;
     }
     
     .game-board {

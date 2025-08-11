@@ -1,3 +1,16 @@
+/* Allow scrolling on summary page */
+body {
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100vh;
+}
+
+.container.summary-page {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
 .page-header {
     text-align: center;
     margin-bottom: 10px;
@@ -91,8 +104,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 8px;
-    padding: 8px;
+    margin-bottom: 6px;
+    padding: 6px 8px;
     background: white;
     border-radius: 8px;
     transition: var(--transition);
@@ -103,7 +116,7 @@
 }
 
 .spec-icon {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .spec-info {
@@ -112,18 +125,20 @@
 
 .spec-label {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 3px;
+    letter-spacing: 0.3px;
+    margin-bottom: -2px;
+    line-height: 1.2;
 }
 
 .spec-value {
     display: block;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--text-primary);
+    line-height: 1.2;
 }
 
 .price-breakdown {

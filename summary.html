@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Gaming Build Summary</title>
-    <link rel="stylesheet" href="css/main.css?v=1.0">
-    <link rel="stylesheet" href="css/summary.css?v=1.0">
+    <link rel="stylesheet" href="css/main.css?v=1.1">
+    <link rel="stylesheet" href="css/summary.css?v=1.1">
 </head>
 <body>
     <div class="container summary-page">
@@ -22,13 +22,32 @@
             <img id="build-image" src="" alt="Your Gaming Build" class="build-image">
             
             <div class="build-details">
+                <div class="sims-performance">
+                    <h3>Sims 4 Performance</h3>
+                    <p id="sims-description"></p>
+                </div>
+                
                 <div class="specs-container">
                     <h3>Your Components:</h3>
+                    <div class="spec-item">
+                        <span class="spec-icon">🧠</span>
+                        <div class="spec-info">
+                            <span class="spec-label">Processor</span>
+                            <span class="spec-value" id="cpu-spec"></span>
+                        </div>
+                    </div>
                     <div class="spec-item">
                         <span class="spec-icon">🎮</span>
                         <div class="spec-info">
                             <span class="spec-label">Graphics Card</span>
                             <span class="spec-value" id="gpu-spec"></span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">💿</span>
+                        <div class="spec-info">
+                            <span class="spec-label">RAM</span>
+                            <span class="spec-value" id="ram-spec"></span>
                         </div>
                     </div>
                     <div class="spec-item">
@@ -38,11 +57,20 @@
                             <span class="spec-value" id="storage-spec"></span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="sims-performance">
-                    <h3>Sims 4 Performance</h3>
-                    <p id="sims-description"></p>
+                    <div class="spec-item">
+                        <span class="spec-icon">🎛️</span>
+                        <div class="spec-info">
+                            <span class="spec-label">Motherboard</span>
+                            <span class="spec-value" id="motherboard-spec"></span>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">⚡</span>
+                        <div class="spec-info">
+                            <span class="spec-label">Power Supply</span>
+                            <span class="spec-value" id="psu-spec"></span>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="price-breakdown">
@@ -82,7 +110,7 @@
         </div>
     </div>
     
-    <script src="js/common.js?v=1.0"></script>
-    <script src="js/summary.js?v=1.0"></script>
+    <script src="js/common.js?v=1.1"></script>
+    <script src="js/summary.js?v=1.1"></script>
 </body>
 </html>

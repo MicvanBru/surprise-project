@@ -1,7 +1,7 @@
-# Surprise Project - Gaming Desktop Selector
+# Surprise Project - Sims 4 Desktop Builder
 
 ## Project Overview
-This is a web application for GitHub Pages that allows someone to select a gaming desktop configuration in a Sims 4-themed interface. This is a **surprise gift project** with a **$800 budget** (displayed as §800 Simoleons in the app).
+A Sims 4-themed surprise gift application where users solve a Wordle-style puzzle to unlock a desktop PC builder experience. The app celebrates a special occasion with a gamified journey from puzzle-solving to selecting computer components.
 
 ## GitHub Repository
 - **Repository**: MicvanBru/surprise-project
@@ -10,22 +10,62 @@ This is a web application for GitHub Pages that allows someone to select a gamin
 
 ## Purpose
 A surprise gift application that:
-1. Starts with a PIN-protected login screen
-2. Allows the recipient to configure a gaming desktop build
-3. Shows remaining budget for Sims 4 expansion packs
-4. Uses Sims 4 theming throughout (Simoleons currency, plumbob icons, etc.)
+1. Starts with a Wordle-style authentication puzzle
+2. Presents personalized intro messages
+3. Allows the recipient to configure a gaming desktop build
+4. Shows remaining budget for Sims 4 expansion packs
+5. Uses Sims 4 theming throughout (Simoleons currency, plumbob icons, etc.)
 
-## Application Structure
+## Current Implementation
 
-### Pages
-1. **index.html** - Login page with 6-digit PIN entry
-2. **builder.html** - Desktop tier selection and configuration
-3. **summary.html** - Final build summary with remaining budget
+### Authentication Flow (Wordle Puzzle)
+- **Location**: `index.html`, `js/wordle.js`, `css/wordle.css`
+- **Features**:
+  - 6-digit code puzzle with Wordle-style gameplay
+  - 6 attempts with color-coded feedback (green/yellow/gray)
+  - Mobile-friendly numeric keyboard (0-9)
+  - Toast notifications for hints and messages
+  - Hint appears after 2 failed attempts
+  - Correct code: '123456'
+  - Success triggers confetti animation and "Start Building!" button
 
-### Tiers (Gaming Builds)
-- **Newbie Simmer** (Budget): §300 base + §50 power-up
-- **Seasoned Player** (Medium): §500 base + §75 power-up  
-- **Master Builder** (Premium): §650 base + §100 power-up
+### Intro Page
+- **Location**: `intro.html`, `js/intro.js`, `css/intro.css`
+- **Features**:
+  - Displays personalized intro messages from `intro-config.json`
+  - Single arrow button (">") for navigation
+  - Button transforms to "Let's Build!" on final slide
+  - Full-width responsive layout with centered text
+
+### Desktop Builder
+- **Location**: `builder.html`, `js/builder.js`, `css/builder.css`
+- **Features**:
+  - Three-tier PC configuration system
+  - Sims 4-styled component cards with pricing in Simoleons (§)
+  - Animated component selection with visual feedback
+  - Real-time budget tracking and tier progress
+  - 2x2 grid layout for components (CPU, GPU, RAM, Storage)
+  - Power Up upgrade options for each tier
+
+### Summary Page
+- **Location**: `summary.html`, `js/summary.js`, `css/summary.css`
+- **Features**:
+  - Displays selected PC configuration
+  - Total cost calculation
+  - Personalized completion message
+  - Option to rebuild configuration
+  - Scrollable layout for full component details
+
+### Tiers (Gaming Builds) - August 2025 Realistic Specs
+- **Newbie Simmer** (Budget): §400 base + §50 power-up
+  - Base: Ryzen 5 5500, RTX 3050, 500GB SSD
+  - Powered: Ryzen 5 5500, RX 6600, 500GB SSD
+- **Seasoned Player** (Medium): §500 base + §100 power-up
+  - Base: Ryzen 5 5500, RX 6600, 500GB SSD
+  - Powered: Ryzen 5 5600, RX 6650 XT, 1TB SSD
+- **Master Builder** (Premium): §700 base + §50 power-up
+  - Base: Ryzen 7 5700X, RX 6700 XT, 1TB SSD
+  - Powered: Ryzen 7 5700X, RX 7700 XT, 1TB SSD
 
 ### Key Features
 - **Budget Tracking**: Real-time remaining budget calculation from §800 total

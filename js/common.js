@@ -31,7 +31,8 @@ function logout() {
 
 async function loadConfiguration() {
     try {
-        const response = await fetch('data/components.json');
+        const timestamp = new Date().getTime();
+        const response = await fetch(`data/components.json?v=${timestamp}`);
         if (!response.ok) throw new Error('Failed to load configuration');
         return await response.json();
     } catch (error) {

@@ -103,16 +103,22 @@ function updateCardContent(tier, build) {
         this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"%3E%3Crect fill="%23667eea" width="300" height="200"/%3E%3Ctext x="150" y="100" text-anchor="middle" fill="white" font-size="20"%3EGaming Desktop%3C/text%3E%3C/svg%3E';
     };
     
+    document.getElementById('cpu-spec').textContent = build.components.cpu;
     document.getElementById('gpu-spec').textContent = build.components.gpu;
+    document.getElementById('ram-spec').textContent = build.components.ram;
     document.getElementById('storage-spec').textContent = build.components.storage;
     
     document.getElementById('sims-description').textContent = build.simsDescription;
+    
+    // Update power label to show the actual upgraded GPU
+    const upgradedGpu = build.poweredComponents.gpu;
+    document.getElementById('power-label').textContent = `Power Up: Upgrade to ${upgradedGpu}`;
     
     document.getElementById('power-price').innerHTML = `+${formatCurrency(build.powerUpPrice)}`;
     document.getElementById('power-toggle').checked = false;
     document.getElementById('power-upgrade').classList.remove('active');
     
-    document.getElementById('tier-specs').style.display = 'block';
+    document.getElementById('tier-specs').style.display = 'grid';
     document.getElementById('sims-performance').style.display = 'block';
     document.getElementById('power-upgrade').style.display = 'flex';
 }
@@ -122,7 +128,9 @@ function togglePower(enabled) {
     const build = config.builds[selectedTier];
     const components = isPowered ? build.poweredComponents : build.components;
     
+    document.getElementById('cpu-spec').textContent = components.cpu;
     document.getElementById('gpu-spec').textContent = components.gpu;
+    document.getElementById('ram-spec').textContent = components.ram;
     document.getElementById('storage-spec').textContent = components.storage;
     
     const powerUpgrade = document.getElementById('power-upgrade');

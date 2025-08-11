@@ -6,50 +6,82 @@
   },
   "builds": {
     "budget": {
-      "name": "Newbie Simmer",
-      "basePrice": 300,
+      "name": "Cheerful",
+      "basePrice": 400,
       "powerUpPrice": 50,
-      "description": "Perfect for cozy gameplay with smooth performance",
-      "simsDescription": "• Run Sims 4 on medium settings\n• Perfect for building homes and creating Sims\n• Smooth gameplay with base game\n• Handles 3-4 expansion packs well",
+      "description": "Perfect for smooth Sims 4 gameplay at great value",
+      "simsDescription": "• Dominates Sims 4 at ultra settings\n• Maintain 120+ FPS with DLSS\n• Handle all DLC with ease\n• Buttery-smooth gameplay",
       "components": {
-        "gpu": "Entry Gaming GPU",
-        "storage": "500GB SSD"
+        "cpu": "Ryzen 5 5500",
+        "gpu": "RTX 3050",
+        "motherboard": "ASRock A520M WiFi",
+        "ram": "16GB DDR4",
+        "storage": "500GB SSD",
+        "psu": "500W Bronze",
+        "case": "Cooler Master Q300L"
       },
       "poweredComponents": {
-        "gpu": "Enhanced Gaming GPU",
-        "storage": "1TB SSD"
+        "cpu": "Ryzen 5 5500",
+        "gpu": "RX 6600",
+        "motherboard": "ASRock B450M WiFi",
+        "ram": "16GB DDR4",
+        "storage": "500GB SSD",
+        "psu": "450W Bronze",
+        "case": "Thermaltake Versa H18"
       },
       "image": "images/tier_1_desktop.png"
     },
     "medium": {
-      "name": "Seasoned Player",
+      "name": "Ambitious",
       "basePrice": 500,
-      "powerUpPrice": 75,
+      "powerUpPrice": 100,
       "description": "Great balance of performance and features",
-      "simsDescription": "• Run Sims 4 on high settings\n• Handle large households smoothly\n• Create complex builds without lag\n• Play with 8+ expansion packs",
+      "simsDescription": "• Absolutely dominate at ultra settings\n• 144+ FPS with all expansion packs\n• Handle complex builds without breaking a sweat\n• Stream-ready performance",
       "components": {
-        "gpu": "Mid-Range Gaming GPU",
-        "storage": "1TB SSD"
+        "cpu": "Ryzen 5 5500",
+        "gpu": "RX 6600",
+        "motherboard": "ASRock B450M WiFi",
+        "ram": "16GB DDR4",
+        "storage": "500GB SSD",
+        "psu": "450W Bronze",
+        "case": "Thermaltake Versa H18"
       },
       "poweredComponents": {
-        "gpu": "High-Performance GPU",
-        "storage": "2TB SSD"
+        "cpu": "Ryzen 5 5600",
+        "gpu": "RX 6650 XT",
+        "motherboard": "ASUS B550M WiFi",
+        "ram": "16GB DDR4",
+        "storage": "1TB SSD",
+        "psu": "550W Bronze",
+        "case": "DIYPC MA01"
       },
       "image": "images/tier_2_desktop.png"
     },
     "premium": {
-      "name": "Master Builder",
-      "basePrice": 650,
-      "powerUpPrice": 100,
-      "description": "Top-tier performance for the ultimate experience",
-      "simsDescription": "• Run Sims 4 on ultra settings\n• All expansion packs at max performance\n• Stream and record gameplay\n• Heavy mod support\n• Zero lag with massive builds",
+      "name": "Perfectionist",
+      "basePrice": 700,
+      "powerUpPrice": 50,
+      "description": "Powerhouse build for the ultimate Sims experience",
+      "simsDescription": "• Run at maximum settings with zero concerns\n• 200+ FPS with large households\n• Handle complex builds effortlessly\n• All DLC at peak performance\n• Future-proof gaming",
       "components": {
-        "gpu": "High-End Gaming GPU",
-        "storage": "2TB SSD"
+        "cpu": "Ryzen 7 5700X",
+        "gpu": "RX 6700 XT",
+        "motherboard": "MSI B450 Gaming WiFi",
+        "ram": "32GB DDR4",
+        "storage": "1TB SSD",
+        "psu": "650W Bronze",
+        "case": "Montech X3 Mesh",
+        "cooler": "ID-COOLING SE-224-XT"
       },
       "poweredComponents": {
-        "gpu": "Flagship Gaming GPU",
-        "storage": "4TB SSD"
+        "cpu": "Ryzen 7 5700X",
+        "gpu": "RX 7700 XT",
+        "motherboard": "MSI B450 Gaming WiFi",
+        "ram": "32GB DDR4",
+        "storage": "1TB SSD",
+        "psu": "650W Bronze",
+        "case": "Montech X3 Mesh",
+        "cooler": "ID-COOLING SE-224-XT"
       },
       "image": "images/tier_3_desktop.png"
     }

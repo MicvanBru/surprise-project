@@ -33,8 +33,12 @@ function displaySummary(selection) {
         this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"%3E%3Crect fill="%23667eea" width="300" height="200"/%3E%3Ctext x="150" y="100" text-anchor="middle" fill="white" font-size="20"%3EGaming Desktop%3C/text%3E%3C/svg%3E';
     };
     
+    document.getElementById('cpu-spec').textContent = selection.components.cpu || 'AMD Ryzen 5';
     document.getElementById('gpu-spec').textContent = selection.components.gpu;
+    document.getElementById('ram-spec').textContent = selection.components.ram || '16GB DDR4';
     document.getElementById('storage-spec').textContent = selection.components.storage;
+    document.getElementById('motherboard-spec').textContent = selection.components.motherboard || 'Gaming Motherboard';
+    document.getElementById('psu-spec').textContent = selection.components.psu || '550W 80+ Bronze';
     
     document.getElementById('base-cost').innerHTML = formatCurrency(selection.basePrice);
     
