@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     const introText = document.getElementById('intro-text');
-    const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     
     // Load intro configuration
@@ -46,25 +45,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             introText.style.opacity = '1';
         }, 200);
         
-        // Update button states
-        prevBtn.disabled = currentLineIndex === 0;
-        
         // Check if we're on the last line
         if (currentLineIndex === introLines.length - 1) {
-            nextBtn.textContent = "Let's build!";
+            nextBtn.innerHTML = "Let's build!";
             nextBtn.classList.add('pulse');
+            nextBtn.classList.add('final');
         } else {
-            nextBtn.textContent = 'Next';
+            nextBtn.innerHTML = '&gt;';
             nextBtn.classList.remove('pulse');
+            nextBtn.classList.remove('final');
         }
     }
-    
-    prevBtn.addEventListener('click', () => {
-        if (currentLineIndex > 0) {
-            currentLineIndex--;
-            displayLine();
-        }
-    });
     
     nextBtn.addEventListener('click', () => {
         if (currentLineIndex < introLines.length - 1) {
@@ -79,9 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
-            prevBtn.click();
-        } else if (e.key === 'ArrowRight' || e.key === 'Enter') {
+        if (e.key === 'ArrowRight' || e.key === 'Enter') {
             nextBtn.click();
         }
     });

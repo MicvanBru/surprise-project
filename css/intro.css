@@ -1,13 +1,15 @@
 .intro-card {
     background: transparent;
-    max-width: 700px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     min-height: calc(100vh - 40px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
     padding: 60px 40px 40px;
+    box-sizing: border-box;
 }
 
 
@@ -20,6 +22,9 @@
     padding: 40px 20px;
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .intro-text {
@@ -65,56 +70,45 @@
 
 .intro-controls {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    justify-content: flex-end;
     margin-top: auto;
     padding-top: 40px;
+    padding-right: 0;
     position: relative;
     z-index: 1;
-}
-
-.intro-controls button {
-    min-width: 120px;
-}
-
-.intro-controls .btn-secondary {
-    background: transparent;
-    color: white;
-    padding: 12px 24px;
-    border: 2px solid white;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.intro-controls .btn-secondary:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.intro-controls .btn-secondary:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
+    width: 100%;
 }
 
 .intro-controls .btn-primary {
     background: linear-gradient(145deg, var(--sims-green), var(--sims-green-dark));
     color: white;
-    padding: 12px 24px;
+    width: 60px;
+    height: 60px;
+    padding: 0;
     border: none;
-    border-radius: 12px;
-    font-size: 1rem;
+    border-radius: 30px;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
-    transition: var(--transition);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                font-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 8px rgba(144, 238, 144, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.intro-controls .btn-primary.final {
+    width: 180px;
+    font-size: 1.1rem;
+    padding: 0 25px;
 }
 
 .intro-controls .btn-primary:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 12px rgba(144, 238, 144, 0.4);
 }
 
@@ -144,12 +138,16 @@
         line-height: 1.5;
     }
     
-    .intro-controls {
-        flex-direction: column;
-        gap: 10px;
+    .intro-controls .btn-primary {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        font-size: 1.3rem;
     }
     
-    .intro-controls button {
-        width: 100%;
+    .intro-controls .btn-primary.final {
+        width: 150px;
+        font-size: 1rem;
+        padding: 0 20px;
     }
 }

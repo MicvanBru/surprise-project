@@ -45,8 +45,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -70,7 +69,7 @@ body::before {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 5px;
     position: relative;
     z-index: 1;
     flex: 1;
@@ -220,7 +219,7 @@ body::before {
 
 @media (max-width: 768px) {
     .container {
-        padding: 15px;
+        padding: 5px;
     }
     
     .page-header h1 {
