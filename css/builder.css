@@ -8,7 +8,6 @@ html, body {
     overflow: hidden !important;
     height: 100vh;
     height: 100dvh;
-    position: fixed;
     width: 100%;
 }
 
