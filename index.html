@@ -2,10 +2,475 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Surprise Gift - Code Puzzle</title>
-    <link rel="stylesheet" href="css/main.css?v=1.1">
-    <link rel="stylesheet" href="css/wordle.css?v=1.0">
+    
+    <style>
+        :root {
+            --sims-blue: #00B2CA;
+            --sims-blue-dark: #0099AD;
+            --sims-green: #90EE90;
+            --sims-green-dark: #6BC96B;
+            --sims-yellow: #F1C40F;
+            --sims-red: #E74C3C;
+            --sims-purple: #9B59B6;
+            --text-primary: #2C3E50;
+            --text-secondary: #7F8C8D;
+            --border-color: #d3d6da;
+            --tile-absent: #787c7e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @font-face {
+            font-family: 'SimsFont';
+            src: url('fonts/Loucos Lyne - thesimssansbold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'SimsFont', 'Arial Rounded MT Bold', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+            touch-action: pan-x pan-y;
+        }
+
+        .mobile-container {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            position: relative;
+        }
+
+        /* Header Section - 12vh */
+        .header {
+            height: 12vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .plumbob {
+            color: var(--sims-green);
+            font-size: 1.2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .header h1 {
+            color: var(--sims-blue);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin: 2px 0;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+        }
+
+        .help-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--sims-blue);
+            color: white;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Game Board - 40vh */
+        .game-board {
+            height: 40vh;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-rows: repeat(6, 1fr);
+            gap: 3px;
+            width: min(90vw, 300px);
+            height: 100%;
+            max-height: 36vh;
+        }
+
+        .game-row {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 3px;
+        }
+
+        .game-tile {
+            aspect-ratio: 1;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: bold;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .game-tile.filled {
+            border-color: #878a8c;
+            animation: pop 0.1s ease;
+        }
+
+        .game-tile.correct {
+            background: var(--sims-green);
+            border-color: var(--sims-green);
+            color: white;
+        }
+
+        .game-tile.present {
+            background: var(--sims-yellow);
+            border-color: var(--sims-yellow);
+            color: white;
+        }
+
+        .game-tile.absent {
+            background: var(--tile-absent);
+            border-color: var(--tile-absent);
+            color: white;
+        }
+
+        @keyframes pop {
+            50% { transform: scale(1.05); }
+        }
+
+        .game-tile.shake {
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translateX(-2px); }
+            20%, 80% { transform: translateX(2px); }
+            30%, 50%, 70% { transform: translateX(-2px); }
+            40%, 60% { transform: translateX(2px); }
+        }
+
+        .game-tile.reveal {
+            animation: flip 0.5s ease;
+        }
+
+        @keyframes flip {
+            0% { transform: rotateX(0); }
+            50% { transform: rotateX(90deg); }
+            100% { transform: rotateX(0); }
+        }
+
+        .game-tile.bounce {
+            animation: bounce 0.5s ease;
+        }
+
+        @keyframes bounce {
+            25% { transform: translateY(-5px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-3px); }
+        }
+
+        /* Keyboard Section - 48vh */
+        .keyboard-section {
+            height: 48vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 10px;
+            background: #f8f9fa;
+        }
+
+        .keyboard {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .key {
+            width: 60px;
+            height: 50px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            background: white;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: inherit;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s;
+        }
+
+        .key:active {
+            transform: scale(0.95);
+            background: #e0e0e0;
+        }
+
+        .key.key-special {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .key.key-enter {
+            background: var(--sims-blue);
+            color: white;
+            border-color: var(--sims-blue);
+        }
+
+        .key.correct {
+            background: var(--sims-green);
+            color: white;
+            border-color: var(--sims-green);
+        }
+
+        .key.present {
+            background: var(--sims-yellow);
+            color: white;
+            border-color: var(--sims-yellow);
+        }
+
+        .key.absent {
+            background: var(--tile-absent);
+            color: white;
+            border-color: var(--tile-absent);
+        }
+
+        .success-button {
+            display: none;
+            background: linear-gradient(135deg, var(--sims-blue), var(--sims-blue-dark));
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(0, 178, 202, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            transition: top 0.3s ease;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .toast.show {
+            top: 20px;
+        }
+
+        .toast-content {
+            background: rgba(155, 89, 182, 0.95);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .toast.error .toast-content {
+            background: rgba(231, 76, 60, 0.95);
+        }
+
+        .toast.success .toast-content {
+            background: rgba(144, 238, 144, 0.95);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: var(--sims-red);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal h2 {
+            color: var(--sims-blue);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .instructions {
+            text-align: left;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+
+        .instructions p {
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .instructions ul {
+            margin: 10px 0 10px 20px;
+        }
+
+        .instructions li {
+            margin: 8px 0;
+        }
+
+        .example {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .example-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+
+        .example-tile {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .example-tile.correct {
+            background: var(--sims-green);
+        }
+
+        .example-tile.present {
+            background: var(--sims-yellow);
+        }
+
+        .example-tile.absent {
+            background: var(--tile-absent);
+        }
+
+        .example-row span {
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .tip {
+            padding: 8px;
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 6px;
+            color: var(--sims-purple);
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        /* Ensure no scrollbars */
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        *::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Toast Notification -->
@@ -15,82 +480,83 @@
         </div>
     </div>
     
-    <div class="container">
-        <div class="wordle-card">
-            <div class="wordle-header">
-                <div class="plumbob">♦</div>
-                <h1>Sul Sul, Hannah!</h1>
-                <p class="subtitle">Enter your 6-digit code to start building</p>
-                <button id="help-btn" class="help-button" aria-label="How to play">
-                    <span>?</span>
-                </button>
-            </div>
-            
-            <div id="game-board" class="game-board">
+    <div class="mobile-container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="plumbob">♦</div>
+            <h1>Sul Sul, Hannah!</h1>
+            <p class="subtitle">Enter your 6-digit code</p>
+            <button id="help-btn" class="help-btn" aria-label="How to play">?</button>
+        </div>
+        
+        <!-- Game Board Section -->
+        <div class="game-board">
+            <div id="game-board" class="board-grid">
                 <!-- 6 rows × 6 cells will be generated by JavaScript -->
-            </div>
-            
-            <div class="input-area">
-                <div id="keyboard" class="keyboard">
-                    <div class="keyboard-row">
-                        <button class="key" data-key="1">1</button>
-                        <button class="key" data-key="2">2</button>
-                        <button class="key" data-key="3">3</button>
-                    </div>
-                    <div class="keyboard-row">
-                        <button class="key" data-key="4">4</button>
-                        <button class="key" data-key="5">5</button>
-                        <button class="key" data-key="6">6</button>
-                    </div>
-                    <div class="keyboard-row">
-                        <button class="key" data-key="7">7</button>
-                        <button class="key" data-key="8">8</button>
-                        <button class="key" data-key="9">9</button>
-                    </div>
-                    <div class="keyboard-row">
-                        <button class="key key-special" data-key="Backspace">←</button>
-                        <button class="key" data-key="0">0</button>
-                        <button class="key key-special key-enter" data-key="Enter">↵</button>
-                    </div>
-                </div>
-                
-                <button id="start-building-btn" class="btn-primary success-button" style="display: none;">
-                    <span class="btn-text">Start Building!</span>
-                </button>
             </div>
         </div>
         
-        <!-- Instructions Modal -->
-        <div id="instructions-modal" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" aria-label="Close">&times;</button>
-                <h2>How to Play</h2>
-                <div class="instructions">
-                    <p>Guess the 6-digit code in 6 tries!</p>
-                    <ul>
-                        <li>Each guess must be a complete 6-digit number</li>
-                        <li>After each guess, the color of the tiles will change:</li>
-                    </ul>
-                    <div class="example">
-                        <div class="example-row">
-                            <div class="example-tile correct">5</div>
-                            <span>Green = Correct digit in the correct spot</span>
-                        </div>
-                        <div class="example-row">
-                            <div class="example-tile present">3</div>
-                            <span>Yellow = Correct digit in the wrong spot</span>
-                        </div>
-                        <div class="example-row">
-                            <div class="example-tile absent">7</div>
-                            <span>Gray = Digit is not in the code</span>
-                        </div>
-                    </div>
-                    <p class="tip">💡 Tip: Pay attention to the hints after a few tries!</p>
+        <!-- Keyboard Section -->
+        <div class="keyboard-section">
+            <div id="keyboard" class="keyboard">
+                <div class="keyboard-row">
+                    <button class="key" data-key="1">1</button>
+                    <button class="key" data-key="2">2</button>
+                    <button class="key" data-key="3">3</button>
                 </div>
+                <div class="keyboard-row">
+                    <button class="key" data-key="4">4</button>
+                    <button class="key" data-key="5">5</button>
+                    <button class="key" data-key="6">6</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key" data-key="7">7</button>
+                    <button class="key" data-key="8">8</button>
+                    <button class="key" data-key="9">9</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key key-special" data-key="Backspace">←</button>
+                    <button class="key" data-key="0">0</button>
+                    <button class="key key-special key-enter" data-key="Enter">↵</button>
+                </div>
+            </div>
+            
+            <button id="start-building-btn" class="success-button">
+                Start Building!
+            </button>
+        </div>
+    </div>
+    
+    <!-- Instructions Modal -->
+    <div id="instructions-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>How to Play</h2>
+            <div class="instructions">
+                <p>Guess the 6-digit code in 6 tries!</p>
+                <ul>
+                    <li>Each guess must be a complete 6-digit number</li>
+                    <li>After each guess, the color of the tiles will change:</li>
+                </ul>
+                <div class="example">
+                    <div class="example-row">
+                        <div class="example-tile correct">5</div>
+                        <span>Green = Correct digit in the correct spot</span>
+                    </div>
+                    <div class="example-row">
+                        <div class="example-tile present">3</div>
+                        <span>Yellow = Correct digit in the wrong spot</span>
+                    </div>
+                    <div class="example-row">
+                        <div class="example-tile absent">7</div>
+                        <span>Gray = Digit is not in the code</span>
+                    </div>
+                </div>
+                <p class="tip">💡 Tip: Pay attention to the hints!</p>
             </div>
         </div>
     </div>
     
-    <script src="js/wordle.js?v=1.0"></script>
+    <script src="js/wordle.js?v=2.0"></script>
 </body>
 </html>
