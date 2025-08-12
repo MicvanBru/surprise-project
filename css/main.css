@@ -45,9 +45,11 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
+    -webkit-overflow-scrolling: touch;
 }
 
 body::before {
@@ -69,12 +71,13 @@ body::before {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 5px;
+    padding: 10px;
     position: relative;
     z-index: 1;
     flex: 1;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .plumbob {
@@ -123,8 +126,10 @@ body::before {
     align-items: center;
     gap: 12px;
     min-height: 50px;
+    min-width: 44px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    touch-action: manipulation;
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -156,6 +161,8 @@ body::before {
     align-items: center;
     gap: 10px;
     min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
 }
 
 .btn-secondary:hover {
@@ -233,10 +240,35 @@ body::before {
     .btn-primary {
         padding: 14px 24px;
         font-size: 1rem;
+        min-height: 48px;
+    }
+    
+    .btn-secondary {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        min-height: 48px;
     }
     
     .logout-btn {
         position: static;
         margin-top: 15px;
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .container {
+        padding: 0;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
     }
 }

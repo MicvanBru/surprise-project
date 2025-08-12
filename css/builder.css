@@ -3,7 +3,9 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    padding: 5px 0;
+    padding: 8px 0;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .page-load .page-header-compact {
@@ -33,12 +35,15 @@
     background: rgba(255, 255, 255, 0.2);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 4px 12px;
+    padding: 8px 16px;
     border-radius: 12px;
     cursor: pointer;
     transition: var(--transition);
     font-size: 0.85rem;
     font-weight: 600;
+    min-height: 36px;
+    min-width: 44px;
+    touch-action: manipulation;
 }
 
 .logout-btn-small:hover {
@@ -55,6 +60,9 @@
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .page-load .tier-selector {
@@ -77,13 +85,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: none;
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
     font-family: inherit;
+    min-height: 44px;
+    min-width: 80px;
+    touch-action: manipulation;
+    white-space: nowrap;
 }
 
 .tier-btn:hover {
@@ -98,7 +110,7 @@
 }
 
 .tier-name {
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -414,7 +426,9 @@
 .toggle-switch {
     position: relative;
     width: 60px;
-    height: 30px;
+    height: 34px;
+    min-width: 60px;
+    min-height: 34px;
 }
 
 .toggle-switch input {
@@ -514,7 +528,7 @@ input:checked + .toggle-slider:before {
     background: linear-gradient(135deg, var(--sims-green), var(--sims-green-dark));
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 40px;
     font-size: 0.95rem;
     font-weight: bold;
@@ -526,6 +540,9 @@ input:checked + .toggle-slider:before {
     gap: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    min-height: 48px;
+    min-width: 100px;
+    touch-action: manipulation;
 }
 
 .btn-create:hover:not(:disabled) {
@@ -548,29 +565,46 @@ input:checked + .toggle-slider:before {
 }
 
 @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .container {
+        padding: 5px;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+    
     .page-header-compact {
         padding: 8px 0;
     }
     
     .page-header-compact h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     
     .tier-selector {
-        padding: 5px;
-        gap: 5px;
+        padding: 4px;
+        gap: 4px;
+        margin-bottom: 8px;
     }
     
     .tier-btn {
         padding: 8px 10px;
+        min-width: 70px;
     }
     
     .tier-name {
-        font-size: 0.85rem;
+        font-size: clamp(0.75rem, 2vw, 0.85rem);
     }
     
     .tier-card {
         padding: 15px;
+        border-radius: 16px;
+        overflow-y: auto;
+        max-height: calc(100vh - 250px);
+        max-height: calc(100dvh - 250px);
     }
     
     .tier-image-container {
@@ -622,18 +656,77 @@ input:checked + .toggle-slider:before {
     }
     
     .summary-bar {
-        padding: 15px;
-        flex-direction: column;
-        gap: 15px;
+        padding: 12px 15px;
+        flex-direction: row;
+        gap: 10px;
+        border-radius: 12px;
+        flex-wrap: wrap;
     }
     
     .summary-left {
-        width: 100%;
-        justify-content: space-around;
+        flex: 1;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    
+    .summary-label {
+        font-size: 0.75rem;
+    }
+    
+    .summary-value {
+        font-size: 1.1rem;
     }
     
     .btn-create {
-        width: 100%;
-        justify-content: center;
+        flex: 0 1 auto;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0;
+    }
+    
+    .page-header-compact h1 {
+        font-size: 1.1rem;
+    }
+    
+    .tier-selector {
+        padding: 3px;
+        gap: 3px;
+    }
+    
+    .tier-btn {
+        padding: 6px 8px;
+        min-width: 60px;
+    }
+    
+    .tier-name {
+        font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+        letter-spacing: 0;
+    }
+    
+    .tier-card {
+        padding: 10px;
+        max-height: calc(100vh - 220px);
+        max-height: calc(100dvh - 220px);
+    }
+    
+    .tier-display {
+        margin-bottom: 10px;
+    }
+    
+    .summary-bar {
+        padding: 10px;
+        position: sticky;
+        bottom: 0;
+        background: white;
+        z-index: 10;
+    }
+    
+    .btn-create {
+        min-width: 80px;
     }
 }
