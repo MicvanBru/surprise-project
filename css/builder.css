@@ -1,11 +1,34 @@
+/* Mobile-First Design - Base styles for smartphones */
+* {
+    touch-action: manipulation;
+}
+
+/* Prevent any scrolling on mobile */
+html, body {
+    overflow: hidden !important;
+    height: 100vh;
+    height: 100dvh;
+    position: fixed;
+    width: 100%;
+}
+
+.container {
+    height: 100vh;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 8px;
+    padding: 8px;
+    overflow: hidden;
+}
+
+/* Compact Header */
 .page-header-compact {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    padding: 8px 0;
-    flex-wrap: wrap;
-    gap: 10px;
+    padding: 6px 0;
+    gap: 8px;
 }
 
 .page-load .page-header-compact {
@@ -24,7 +47,7 @@
 }
 
 .page-header-compact h1 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     margin: 0;
@@ -35,34 +58,30 @@
     background: rgba(255, 255, 255, 0.2);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 12px;
     cursor: pointer;
     transition: var(--transition);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    min-height: 36px;
+    min-height: 32px;
     min-width: 44px;
-    touch-action: manipulation;
 }
 
-.logout-btn-small:hover {
+.logout-btn-small:active {
     background: white;
     color: var(--sims-blue);
-    transform: translateY(-1px);
+    transform: scale(0.95);
 }
 
+/* Tier Selector */
 .tier-selector {
     display: flex;
-    gap: 6px;
+    gap: 4px;
     background: white;
-    padding: 5px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 4px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .page-load .tier-selector {
@@ -85,60 +104,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 12px;
+    padding: 8px 4px;
     border: none;
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
     font-family: inherit;
-    min-height: 44px;
-    min-width: 80px;
-    touch-action: manipulation;
-    white-space: nowrap;
+    min-height: 36px;
 }
 
-.tier-btn:hover {
-    background: var(--bg-light);
-    transform: translateY(-2px);
+.tier-btn:active {
+    transform: scale(0.95);
 }
 
 .tier-btn.active {
     background: linear-gradient(135deg, var(--sims-blue), var(--sims-blue-dark));
     color: white;
-    box-shadow: 0 4px 10px rgba(0, 178, 202, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 178, 202, 0.3);
 }
 
 .tier-name {
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    font-size: 0.7rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
 }
 
+/* Tier Display */
 .tier-display {
     flex: 1;
     display: flex;
-    align-items: stretch;
-    margin-bottom: 15px;
     min-height: 0;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .tier-card {
     background: white;
-    border-radius: 18px;
-    padding: 25px 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: visible;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 8px;
+    overflow: hidden;
 }
 
 .page-load .tier-card {
@@ -196,24 +206,23 @@
     }
 }
 
-
+/* Desktop Image */
 .tier-image-container {
     position: relative;
-    margin: 10px auto 20px;
-    max-width: 400px;
+    max-width: 150px;
     width: 100%;
+    margin: 0 auto;
+    height: auto;
 }
 
 .tier-image {
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 12px;
-    background: transparent;
+    border-radius: 8px;
     object-fit: contain;
     position: relative;
     z-index: 2;
-    margin: 0 auto;
 }
 
 .tier-image.floating {
@@ -222,18 +231,17 @@
 
 .tier-image-shadow {
     position: absolute;
-    bottom: -5px;
+    bottom: -3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 15px;
-    background: rgba(0, 0, 0, 0.4);
+    width: 50%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
-    box-shadow: 0 0 25px 15px rgba(0, 0, 0, 0.35);
-    filter: blur(4px);
+    box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.25);
+    filter: blur(3px);
     animation: shadowPulse 4s ease-in-out infinite;
     z-index: 1;
-    pointer-events: none;
 }
 
 @keyframes gentleFloat {
@@ -241,14 +249,14 @@
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-5px);
     }
 }
 
 @keyframes shadowPulse {
     0%, 100% {
         transform: translateX(-50%) scaleX(0.9);
-        opacity: 0.6;
+        opacity: 0.5;
     }
     50% {
         transform: translateX(-50%) scaleX(1.1);
@@ -256,51 +264,54 @@
     }
 }
 
-
+/* Specs Container */
 .specs-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 5px;
+    gap: 6px;
 }
 
-@media (min-width: 900px) {
-    .specs-container {
-        flex-direction: row;
-        gap: 15px;
-    }
-    
-    .sims-performance-box {
-        flex: 1;
-        margin-bottom: 0;
-    }
-    
-    .tier-specs {
-        flex: 1;
-        margin-bottom: 0;
-    }
+/* Sims Performance Box */
+.sims-performance-box {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(0, 178, 202, 0.1));
+    border-radius: 8px;
+    padding: 8px;
 }
 
+.sims-performance-box h3 {
+    color: var(--sims-purple);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.sims-performance-box p {
+    color: var(--text-primary);
+    line-height: 1.3;
+    font-size: 0.75rem;
+    white-space: pre-line;
+    margin: 0;
+}
+
+/* Tier Specs Grid */
 .tier-specs {
     background: var(--bg-light);
-    border-radius: 10px;
-    padding: 12px;
-    margin-bottom: 5px;
+    border-radius: 8px;
+    padding: 6px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 4px;
 }
 
 .spec-row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 0;
-    min-width: 0;
+    gap: 6px;
 }
 
 .spec-icon {
-    font-size: 1.4rem;
+    font-size: 1rem;
     flex-shrink: 0;
 }
 
@@ -312,123 +323,77 @@
 
 .spec-label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.55rem;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
     margin-bottom: -2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.2;
+    line-height: 1;
 }
 
 .spec-value {
     display: block;
     font-weight: bold;
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 0.7rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
-@media (max-width: 480px) {
-    .tier-specs {
-        gap: 6px;
-        padding: 10px;
-    }
-    
-    .spec-row {
-        gap: 10px;
-    }
-    
-    .spec-icon {
-        font-size: 1.2rem;
-    }
-    
-    .spec-label {
-        font-size: 0.6rem;
-        letter-spacing: 0.2px;
-        margin-bottom: -3px;
-    }
-    
-    .spec-value {
-        font-size: 0.8rem;
-    }
-}
-
-.sims-performance-box {
-    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(0, 178, 202, 0.1));
-    border-radius: 10px;
-    padding: 12px;
-    margin-bottom: 5px;
-}
-
-.sims-performance-box h3 {
-    color: var(--sims-purple);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-}
-
-.sims-performance-box p {
-    color: var(--text-primary);
-    line-height: 1.5;
-    font-size: 0.9rem;
-    white-space: pre-line;
-    margin: 0;
-}
-
+/* Power Upgrade */
 .power-upgrade {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(241, 196, 15, 0.05));
-    border: 2px solid var(--sims-yellow);
-    border-radius: 10px;
-    padding: 12px 15px;
+    border: 1.5px solid var(--sims-yellow);
+    border-radius: 8px;
+    padding: 6px 8px;
     transition: var(--transition);
 }
 
 .power-upgrade.active {
     background: linear-gradient(135deg, rgba(241, 196, 15, 0.3), rgba(241, 196, 15, 0.15));
-    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.2);
+    box-shadow: 0 2px 8px rgba(241, 196, 15, 0.2);
 }
 
 .power-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
     flex: 1;
 }
 
 .power-icon {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .power-label {
     display: block;
     font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: 2px;
+    font-size: 0.75rem;
+    margin-bottom: 1px;
 }
 
 .power-price {
     display: block;
     color: var(--sims-green);
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: 0.7rem;
 }
 
+/* Toggle Switch */
 .toggle-switch {
     position: relative;
-    width: 60px;
-    height: 34px;
-    min-width: 60px;
-    min-height: 34px;
+    width: 44px;
+    height: 24px;
+    min-width: 44px;
+    min-height: 24px;
 }
 
 .toggle-switch input {
@@ -445,19 +410,19 @@
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px;
+    transition: 0.3s;
+    border-radius: 24px;
 }
 
 .toggle-slider:before {
     position: absolute;
     content: "";
-    height: 22px;
-    width: 22px;
+    height: 16px;
+    width: 16px;
     left: 4px;
     bottom: 4px;
     background-color: white;
-    transition: 0.4s;
+    transition: 0.3s;
     border-radius: 50%;
 }
 
@@ -466,19 +431,19 @@ input:checked + .toggle-slider {
 }
 
 input:checked + .toggle-slider:before {
-    transform: translateX(30px);
+    transform: translateX(20px);
 }
 
+/* Summary Bar */
 .summary-bar {
     background: white;
-    border-radius: 16px;
-    padding: 12px 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 8px 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    margin-top: auto;
+    gap: 8px;
 }
 
 .page-load .summary-bar {
@@ -498,7 +463,8 @@ input:checked + .toggle-slider:before {
 
 .summary-left {
     display: flex;
-    gap: 30px;
+    gap: 15px;
+    flex: 1;
 }
 
 .summary-item {
@@ -507,17 +473,19 @@ input:checked + .toggle-slider:before {
 }
 
 .summary-label {
-    font-size: 0.85rem;
+    font-size: 0.65rem;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+    line-height: 1;
 }
 
 .summary-value {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--text-primary);
+    line-height: 1;
 }
 
 .summary-item.highlight .summary-value {
@@ -528,26 +496,24 @@ input:checked + .toggle-slider:before {
     background: linear-gradient(135deg, var(--sims-green), var(--sims-green-dark));
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 40px;
-    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(144, 238, 144, 0.3);
+    box-shadow: 0 2px 8px rgba(144, 238, 144, 0.3);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    min-height: 48px;
-    min-width: 100px;
-    touch-action: manipulation;
+    letter-spacing: 0.3px;
+    min-height: 36px;
+    min-width: 70px;
 }
 
-.btn-create:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4);
+.btn-create:active:not(:disabled) {
+    transform: scale(0.95);
 }
 
 .btn-create:disabled {
@@ -556,117 +522,109 @@ input:checked + .toggle-slider:before {
 }
 
 .btn-arrow {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     transition: transform 0.3s ease;
 }
 
-.btn-create:hover:not(:disabled) .btn-arrow {
-    transform: translateX(3px);
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-    
+/* Tablet styles (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
     .container {
-        padding: 5px;
-        height: 100vh;
-        height: 100dvh;
-        overflow: hidden;
-    }
-    
-    .page-header-compact {
-        padding: 8px 0;
+        padding: 12px;
+        gap: 10px;
     }
     
     .page-header-compact h1 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+    
+    .logout-btn-small {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        min-height: 36px;
     }
     
     .tier-selector {
-        padding: 4px;
-        gap: 4px;
-        margin-bottom: 8px;
+        padding: 5px;
+        gap: 5px;
     }
     
     .tier-btn {
-        padding: 8px 10px;
-        min-width: 70px;
+        padding: 10px 8px;
+        min-height: 40px;
     }
     
     .tier-name {
-        font-size: clamp(0.75rem, 2vw, 0.85rem);
+        font-size: 0.85rem;
+        letter-spacing: 0.3px;
     }
     
     .tier-card {
         padding: 15px;
-        border-radius: 16px;
-        overflow-y: auto;
-        max-height: calc(100vh - 250px);
-        max-height: calc(100dvh - 250px);
+        gap: 10px;
     }
     
     .tier-image-container {
         max-width: 200px;
-        margin: 5px auto 15px;
     }
     
-    .specs-container {
-        flex-direction: column;
-        gap: 8px;
+    .sims-performance-box {
+        padding: 10px;
     }
     
     .sims-performance-box h3 {
         font-size: 0.8rem;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
     }
     
     .sims-performance-box p {
         font-size: 0.85rem;
-        line-height: 1.4;
     }
     
     .tier-specs {
         padding: 10px;
+        gap: 8px;
     }
     
-    .spec-row {
-        margin-bottom: 6px;
+    .spec-icon {
+        font-size: 1.2rem;
     }
     
     .spec-label {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .spec-value {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
     
     .power-upgrade {
-        padding: 8px 10px;
+        padding: 10px 12px;
     }
     
     .power-label {
         font-size: 0.9rem;
     }
     
-    .power-benefits {
-        font-size: 0.8rem;
+    .power-price {
+        font-size: 0.85rem;
+    }
+    
+    .toggle-switch {
+        width: 50px;
+        height: 28px;
+    }
+    
+    .toggle-slider:before {
+        height: 20px;
+        width: 20px;
+    }
+    
+    input:checked + .toggle-slider:before {
+        transform: translateX(22px);
     }
     
     .summary-bar {
         padding: 12px 15px;
-        flex-direction: row;
-        gap: 10px;
-        border-radius: 12px;
-        flex-wrap: wrap;
-    }
-    
-    .summary-left {
-        flex: 1;
-        justify-content: space-between;
-        gap: 15px;
     }
     
     .summary-label {
@@ -674,59 +632,262 @@ input:checked + .toggle-slider:before {
     }
     
     .summary-value {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     
     .btn-create {
-        flex: 0 1 auto;
-        padding: 10px 20px;
+        padding: 10px 18px;
         font-size: 0.85rem;
+        min-height: 40px;
     }
 }
 
-@media (max-width: 480px) {
+/* Desktop styles (769px and up) */
+@media (min-width: 769px) {
     .container {
-        padding: 0;
+        padding: 20px;
+        gap: 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .page-header-compact {
+        padding: 12px 0;
     }
     
     .page-header-compact h1 {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
+    }
+    
+    .logout-btn-small {
+        padding: 10px 20px;
+        font-size: 1rem;
+        min-height: 44px;
+    }
+    
+    .logout-btn-small:hover {
+        background: white;
+        color: var(--sims-blue);
+        transform: translateY(-2px);
     }
     
     .tier-selector {
-        padding: 3px;
-        gap: 3px;
+        padding: 8px;
+        gap: 10px;
+        border-radius: 16px;
     }
     
     .tier-btn {
-        padding: 6px 8px;
-        min-width: 60px;
+        padding: 14px 20px;
+        min-height: 48px;
+    }
+    
+    .tier-btn:hover {
+        background: var(--bg-light);
+        transform: translateY(-2px);
     }
     
     .tier-name {
-        font-size: clamp(0.7rem, 2.5vw, 0.8rem);
-        letter-spacing: 0;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
     }
     
     .tier-card {
-        padding: 10px;
-        max-height: calc(100vh - 220px);
-        max-height: calc(100dvh - 220px);
+        padding: 30px;
+        border-radius: 20px;
+        gap: 20px;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr 300px;
     }
     
-    .tier-display {
+    .specs-container {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .tier-image-container {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        max-width: 100%;
+        height: fit-content;
+        margin: auto 0;
+    }
+    
+    .power-upgrade {
+        grid-column: 1 / 3;
+        grid-row: 3;
+        padding: 15px 20px;
+    }
+    
+    .sims-performance-box {
+        flex: 1;
+        padding: 15px;
+    }
+    
+    .sims-performance-box h3 {
+        font-size: 1rem;
         margin-bottom: 10px;
     }
     
+    .sims-performance-box p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .tier-specs {
+        flex: 1;
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .spec-row {
+        gap: 12px;
+    }
+    
+    .spec-icon {
+        font-size: 1.6rem;
+    }
+    
+    .spec-label {
+        font-size: 0.85rem;
+        margin-bottom: 2px;
+    }
+    
+    .spec-value {
+        font-size: 1.1rem;
+    }
+    
+    .power-icon {
+        font-size: 1.8rem;
+    }
+    
+    .power-label {
+        font-size: 1.2rem;
+    }
+    
+    .power-price {
+        font-size: 1.1rem;
+    }
+    
+    .toggle-switch {
+        width: 60px;
+        height: 34px;
+    }
+    
+    .toggle-slider:before {
+        height: 26px;
+        width: 26px;
+    }
+    
+    input:checked + .toggle-slider:before {
+        transform: translateX(26px);
+    }
+    
     .summary-bar {
-        padding: 10px;
-        position: sticky;
-        bottom: 0;
-        background: white;
-        z-index: 10;
+        padding: 20px 30px;
+        border-radius: 18px;
+        gap: 20px;
+    }
+    
+    .summary-left {
+        gap: 40px;
+    }
+    
+    .summary-label {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    .summary-value {
+        font-size: 1.6rem;
     }
     
     .btn-create {
-        min-width: 80px;
+        padding: 14px 28px;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        min-height: 52px;
+        min-width: 120px;
+        gap: 8px;
     }
+    
+    .btn-create:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4);
+    }
+    
+    .btn-create:hover:not(:disabled) .btn-arrow {
+        transform: translateX(3px);
+    }
+    
+    .btn-arrow {
+        font-size: 1.3rem;
+    }
+    
+    .tier-image {
+        border-radius: 12px;
+    }
+    
+    .tier-image-shadow {
+        height: 15px;
+        width: 60%;
+        bottom: -5px;
+        box-shadow: 0 0 25px 15px rgba(0, 0, 0, 0.35);
+    }
+    
+    @keyframes gentleFloat {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+/* Plumbob Currency Symbol */
+.plumbob-currency {
+    color: var(--sims-green);
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+/* Small screen optimization for very small devices */
+@media (max-width: 360px) {
+    .tier-name {
+        font-size: 0.65rem;
+    }
+    
+    .spec-label {
+        font-size: 0.5rem;
+    }
+    
+    .spec-value {
+        font-size: 0.65rem;
+    }
+    
+    .summary-label {
+        font-size: 0.6rem;
+    }
+    
+    .summary-value {
+        font-size: 0.9rem;
+    }
+    
+    .btn-create {
+        font-size: 0.7rem;
+        min-width: 60px;
+    }
+}
+
+/* Ensure no scrollbars appear */
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
