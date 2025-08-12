@@ -19,6 +19,7 @@ html, body {
     grid-template-rows: auto auto 1fr auto;
     gap: 8px;
     padding: 8px;
+    padding-bottom: 12px;
     overflow: hidden;
 }
 
@@ -122,10 +123,11 @@ html, body {
     background: linear-gradient(135deg, var(--sims-blue), var(--sims-blue-dark));
     color: white;
     box-shadow: 0 2px 6px rgba(0, 178, 202, 0.3);
+    transform: none;
 }
 
 .tier-name {
-    font-size: 0.7rem;
+    font-size: clamp(0.75rem, 2.2vw, 1rem);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0;
@@ -145,8 +147,8 @@ html, body {
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
     overflow: hidden;
 }
@@ -209,16 +211,20 @@ html, body {
 /* Desktop Image */
 .tier-image-container {
     position: relative;
-    max-width: 150px;
     width: 100%;
     margin: 0 auto;
-    height: auto;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tier-image {
     display: block;
     width: 100%;
     height: auto;
+    max-height: 100%;
     border-radius: 8px;
     object-fit: contain;
     position: relative;
@@ -269,6 +275,7 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    flex-shrink: 0;
 }
 
 /* Sims Performance Box */
@@ -323,7 +330,7 @@ html, body {
 
 .spec-label {
     display: block;
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.2px;
@@ -338,7 +345,7 @@ html, body {
     display: block;
     font-weight: bold;
     color: var(--text-primary);
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -355,6 +362,7 @@ html, body {
     border-radius: 8px;
     padding: 6px 8px;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .power-upgrade.active {
@@ -444,6 +452,7 @@ input:checked + .toggle-slider:before {
     justify-content: space-between;
     align-items: center;
     gap: 8px;
+    margin-bottom: 4px;
 }
 
 .page-load .summary-bar {
@@ -502,7 +511,7 @@ input:checked + .toggle-slider:before {
     font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 2px 8px rgba(144, 238, 144, 0.3);
+    box-shadow: 0 2px 8px rgba(92, 184, 92, 0.3);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -815,7 +824,7 @@ input:checked + .toggle-slider:before {
     
     .btn-create:hover:not(:disabled) {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4);
+        box-shadow: 0 6px 20px rgba(92, 184, 92, 0.4);
     }
     
     .btn-create:hover:not(:disabled) .btn-arrow {
@@ -857,15 +866,15 @@ input:checked + .toggle-slider:before {
 /* Small screen optimization for very small devices */
 @media (max-width: 360px) {
     .tier-name {
-        font-size: 0.65rem;
+        font-size: clamp(0.7rem, 1.8vw, 0.85rem);
     }
     
     .spec-label {
-        font-size: 0.5rem;
+        font-size: 0.6rem;
     }
     
     .spec-value {
-        font-size: 0.65rem;
+        font-size: 0.75rem;
     }
     
     .summary-label {

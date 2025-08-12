@@ -117,15 +117,15 @@ document.addEventListener('DOMContentLoaded', () => {
         hintMessage.classList.remove('show');
         
         // Change button to success state
-        submitBtn.style.background = 'linear-gradient(145deg, #90EE90, #7FDD7F)';
-        submitBtn.style.borderColor = '#90EE90';
+        submitBtn.style.background = 'linear-gradient(145deg, #5CB85C, #4CAE4C)';
+        submitBtn.style.borderColor = '#5CB85C';
         submitBtn.querySelector('.btn-text').textContent = 'Success!';
         submitBtn.querySelector('.btn-icon').style.display = 'none';
         submitBtn.disabled = true;
         
         inputs.forEach(input => {
-            input.style.background = 'linear-gradient(145deg, #90EE90, #7FDD7F)';
-            input.style.borderColor = '#90EE90';
+            input.style.background = 'linear-gradient(145deg, #5CB85C, #4CAE4C)';
+            input.style.borderColor = '#5CB85C';
         });
         
         localStorage.setItem('authenticated', 'true');

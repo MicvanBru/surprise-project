@@ -1,8 +1,8 @@
 :root {
     --sims-blue: #00B2CA;
     --sims-blue-dark: #0099AD;
-    --sims-green: #90EE90;
-    --sims-green-dark: #6BC96B;
+    --sims-green: #5CB85C;
+    --sims-green-dark: #4CAE4C;
     --sims-purple: #9B59B6;
     --sims-yellow: #F1C40F;
     --sims-red: #E74C3C;
@@ -60,7 +60,7 @@ body::before {
     right: 0;
     bottom: 0;
     background-image: 
-        radial-gradient(circle at 20% 80%, rgba(144, 238, 144, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(92, 184, 92, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(0, 178, 202, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 40%, rgba(155, 89, 182, 0.2) 0%, transparent 50%);
     pointer-events: none;
@@ -156,7 +156,7 @@ body::before {
     font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(144, 238, 144, 0.3);
+    box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -167,7 +167,7 @@ body::before {
 
 .btn-secondary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4);
+    box-shadow: 0 6px 20px rgba(92, 184, 92, 0.4);
 }
 
 .btn-icon {

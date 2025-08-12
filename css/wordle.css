@@ -190,7 +190,7 @@
 }
 
 .toast.success .toast-content {
-    background: rgba(144, 238, 144, 0.95);
+    background: rgba(92, 184, 92, 0.95);
 }
 
 @keyframes slideDown {

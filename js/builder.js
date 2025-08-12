@@ -161,7 +161,7 @@ function updateBudgetDisplay() {
     if (remaining < 0) {
         remainingElement.style.color = '#E74C3C';
     } else {
-        remainingElement.style.color = '#90EE90';
+        remainingElement.style.color = '#5CB85C';
     }
 }
 

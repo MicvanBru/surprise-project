@@ -289,7 +289,7 @@ function showGameOver() {
 }
 
 function confetti() {
-    const colors = ['#00B2CA', '#90EE90', '#9B59B6', '#F1C40F', '#E74C3C'];
+    const colors = ['#00B2CA', '#5CB85C', '#9B59B6', '#F1C40F', '#E74C3C'];
     const confettiCount = 100;
     
     for (let i = 0; i < confettiCount; i++) {
