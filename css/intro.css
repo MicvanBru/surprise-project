@@ -2,7 +2,6 @@
 .intro-card {
     background: transparent;
     width: 100%;
-    height: 100vh;
     height: 100dvh; /* Dynamic viewport height for mobile browsers */
     display: flex;
     flex-direction: column;

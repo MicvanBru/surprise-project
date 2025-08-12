@@ -6,14 +6,12 @@
 /* Prevent any scrolling on mobile */
 html, body {
     overflow: hidden !important;
-    height: 100vh;
     height: 100dvh;
     position: fixed;
     width: 100%;
 }
 
 .container {
-    height: 100vh;
     height: 100dvh;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
