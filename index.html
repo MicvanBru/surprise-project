@@ -77,6 +77,11 @@
             color: var(--sims-green);
             font-size: 1.2rem;
             animation: float 3s ease-in-out infinite;
+            /* Prevent emoji rendering on iOS */
+            font-family: inherit;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
         }
 
         @keyframes float {
@@ -489,7 +494,7 @@
     <div class="mobile-container">
         <!-- Header Section -->
         <div class="header">
-            <div class="plumbob">♦</div>
+            <div class="plumbob">♦︎</div>
             <h1>Sul Sul, Hannah!</h1>
             <p class="subtitle">Enter your 6-digit code</p>
             <button id="help-btn" class="help-btn" aria-label="How to play">?</button>
