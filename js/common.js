@@ -100,15 +100,9 @@ function getDefaultConfiguration() {
 
 function getExpansionSuggestion(remainingBudget) {
     if (remainingBudget >= 200) {
-        return "Enough for 5+ expansion packs! You can get all the major ones like Seasons, City Living, and Get Together!";
-    } else if (remainingBudget >= 150) {
-        return "Perfect for 3-4 expansion packs! Consider getting Seasons, Cats & Dogs, and your favorite gameplay pack!";
-    } else if (remainingBudget >= 100) {
-        return "Great for 2-3 expansion packs! Maybe Seasons and Get to Work?";
-    } else if (remainingBudget >= 50) {
-        return "Enough for 1-2 expansion packs or several game/stuff packs!";
-    } else if (remainingBudget >= 20) {
-        return "Perfect for a game pack or a couple of stuff packs!";
+        return "Enough for some nice accessories and a few expansion packs!";
+    } else if (remainingBudget >= 10) {
+        return "Enough for some nice accessories and some expansion packs!";
     } else {
         return "You've maximized your hardware! Time to start saving for those expansions!";
     }

@@ -1,4 +1,4 @@
-const CORRECT_PIN = '123456';
+const CORRECT_PIN = '081421';
 const MAX_ATTEMPTS = 3;
 let attempts = 0;
 

@@ -1,4 +1,4 @@
-const CORRECT_CODE = '123456';
+const CORRECT_CODE = '081421';
 const MAX_ATTEMPTS = 6;
 const CODE_LENGTH = 6;
 
