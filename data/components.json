@@ -10,7 +10,7 @@
       "basePrice": 400,
       "powerUpPrice": 50,
       "description": "Perfect for smooth Sims 4 gameplay at great value",
-      "simsDescription": "• Dominates Sims 4 at ultra settings\n• Maintain 120+ FPS with DLSS\n• Handle all DLC with ease\n• Buttery-smooth gameplay",
+      "simsDescription": "• Easily runs Sims 4 at high settings\n• Handle all DLC with ease\n• Smooth gameplay",
       "components": {
         "cpu": "Ryzen 5 5500",
         "gpu": "RTX 3050",
@@ -34,9 +34,9 @@
     "medium": {
       "name": "Ambitious",
       "basePrice": 500,
-      "powerUpPrice": 100,
+      "powerUpPrice": 50,
       "description": "Great balance of performance and features",
-      "simsDescription": "• Absolutely dominate at ultra settings\n• 144+ FPS with all expansion packs\n• Handle complex builds without breaking a sweat\n• Stream-ready performance",
+      "simsDescription": "• Runs Sims 4 at ultra settings easily\n• 144+ FPS with all expansion packs\n• Handles complex builds without breaking a sweat",
       "components": {
         "cpu": "Ryzen 5 5500",
         "gpu": "RX 6600",
@@ -59,10 +59,10 @@
     },
     "premium": {
       "name": "Perfectionist",
-      "basePrice": 700,
+      "basePrice": 600,
       "powerUpPrice": 50,
       "description": "Powerhouse build for the ultimate Sims experience",
-      "simsDescription": "• Run at maximum settings with zero concerns\n• 200+ FPS with large households\n• Handle complex builds effortlessly\n• All DLC at peak performance\n• Future-proof gaming",
+      "simsDescription": "• Run at maximum settings with zero concerns\n• 200+ FPS with large households\n• Future-proof gaming",
       "components": {
         "cpu": "Ryzen 7 5700X",
         "gpu": "RX 6700 XT",

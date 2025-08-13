@@ -336,7 +336,7 @@ html, body {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.2px;
-    margin-bottom: -2px;
+    margin-bottom: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -386,7 +386,7 @@ html, body {
 .power-label {
     display: block;
     font-weight: bold;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     margin-bottom: 1px;
 }
 
@@ -394,7 +394,7 @@ html, body {
     display: block;
     color: var(--sims-green);
     font-weight: bold;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
 /* Toggle Switch */

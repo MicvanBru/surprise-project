@@ -39,7 +39,7 @@
     transition: opacity 0.3s ease;
     word-wrap: break-word;
     white-space: normal;
-    hyphens: auto;
+    hyphens: none;
     /* Prevent text from being too large on small screens */
     overflow-wrap: break-word;
 }
